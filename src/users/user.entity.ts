@@ -3,12 +3,19 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
+
+import { Booking } from 'src/bookings/booking.entity';
 
 export enum UserRole {
   ADMIN = 'admin',
   PASSENGER = 'passenger',
 }
+
+
+//entity is just a blueprint of the table in our DB.
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
@@ -33,4 +40,7 @@ export class User {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @OneToMany(() => Booking, (booking) => booking.user ) // ye btarha hy one user has many bookings.
+  bookings: Booking[];
 }
