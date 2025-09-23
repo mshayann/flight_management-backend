@@ -2,7 +2,7 @@ import { Flight } from "src/flights/flight.entity";
 import { Payment } from "src/payments/payment.entity";
 import { Ticket } from "src/tickets/ticket.entity";
 import { User } from "src/users/user.entity";
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('bookings')
 export class Booking {
@@ -20,10 +20,9 @@ export class Booking {
 
     // one booking belong to one payment
     @OneToOne(() => Payment, (payment) => payment.booking)
-    @JoinColumn({name : 'payment_id'})
     payment : Payment;
 
-    // multiple bookings belong to one ticket
+    // one booking belongs to multiple ticket
     @OneToMany(() => Ticket, (ticket) => ticket.booking)
     tickets : Ticket[];
 }

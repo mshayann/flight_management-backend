@@ -7,8 +7,7 @@ export class Ticket {
     @PrimaryGeneratedColumn()
     ticketId : number;
 
-    @PrimaryGeneratedColumn()
-    ticketNumber : number;
+    
 
     @Column()
     issuedAt : Date;

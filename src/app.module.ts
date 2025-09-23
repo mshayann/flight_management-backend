@@ -6,6 +6,9 @@ import { Flight } from './flights/flight.entity';
 import { Booking } from './bookings/booking.entity';
 import { Airport } from './airports/airport.entity';
 import { Airplane } from './airplanes/airplane.entity';
+import { Payment } from './payments/payment.entity';
+import { Ticket } from './tickets/ticket.entity';
+import { AuthModule } from './auth/auth.module';
 
 // Every NestJS app starts from here.
 // It tells NestJS:
@@ -16,7 +19,7 @@ import { Airplane } from './airplanes/airplane.entity';
 
 // ConfigModule.forRoot() is where you set up environment variables(things from .env file).
 
-// TypeOrmModule.forRoot() creates a DataSource internally using your configuration. wrna wohi 
+// TypeOrmModule.forRoot() creates a DataSource internally using your configuration. wrna wohi
 // const myDataSource = new DataSource({
 //     type: "mysql",
 //     host: "localhost",
@@ -32,7 +35,8 @@ import { Airplane } from './airplanes/airplane.entity';
 @Module({
   imports: [
     // database setup
-    TypeOrmModule.forRoot({ //in .forRoot(), you tell nestJS how to connect to database. just needs to be defined here and used all over the project.
+    TypeOrmModule.forRoot({
+      //in .forRoot(), you tell nestJS how to connect to database. just needs to be defined here and used all over the project.
       type: 'mysql',
       host: 'localhost',
       port: 3306,
@@ -40,14 +44,15 @@ import { Airplane } from './airplanes/airplane.entity';
       password: '',
       database: 'flight_management',
       // autoLoadEntities: true,   // if you forget to add a new entity, TypeORM won’t know about it. so, use this instead, then you wont need to enter entities manually
-      entities: [User, Flight, Booking, Airport, Airplane], // To begin using the User entity, we need to let TypeORM know about it by inserting it into the entities array in the module forRoot() method options 
-      synchronize: true,
+      entities: [User, Flight, Booking, Airport, Airplane, Payment, Ticket], // To begin using the User entity, we need to let TypeORM know about it by inserting it into the entities array in the module forRoot() method options
+      // synchronize: true,  // This way, every time you run NestJS, TypeORM will automatically create/update your tables from the entities.
+      migrations: ['dist/migrations/*.js'], // add this to add migrations
+      migrationsRun: true, // auto-run migrations on startup (optional)
     }),
-    UsersModule,  //module imported here so NestJS knows about it.
-
-    
+    UsersModule,
+    AuthModule, //module imported here so NestJS knows about it.
   ],
   controllers: [], // usually empty, unless you want global controllers
-  providers: [],   // usually empty, unless you want global services
+  providers: [], // usually empty, unless you want global services
 })
 export class AppModule {}

@@ -23,7 +23,7 @@ export class Payment {
     @Column()
     createdAt : Date;
 
-    // one payment has multiple bookings
+    
 
     @OneToOne(() => Booking, (booking) => booking.payment)
     @JoinColumn({name : 'booking_id'})

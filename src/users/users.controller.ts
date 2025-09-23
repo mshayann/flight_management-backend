@@ -22,10 +22,10 @@ export class UsersController {
         return this.usersService.signup(signupDTO);
     }
 
-    @Post('login')
+    // @Post('login')
 
-    async login(@Body('email') email : string, @Body('password') password: string){
+    // async login(@Body('email') email : string, @Body('password') password: string){
 
-        return this.usersService.login(email, password);
-    }
+    //     return this.usersService.login(email, password);
+    // }
 }

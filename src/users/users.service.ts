@@ -52,6 +52,17 @@ export class UsersService {
 //       user: savedUser,
 //     };
 //   }
+async findOne(email: string) {
+  const user = await this.usersRepository.findOne({
+    where: { email },
+  });
+
+  if (!user) {
+    throw new NotFoundException('User not found');
+  }
+
+  return user;
+}
 
 
 // with DTO
