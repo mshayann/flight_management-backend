@@ -23,10 +23,10 @@ export class Flight {
   @PrimaryGeneratedColumn({ name: 'flight_id' })
   flightId: number;
 
-  @Column()
+  @Column({name: 'departure_time'})
   departureTime: Date;
 
-  @Column()
+  @Column({name: 'arrival_time'})
   arrivalTime: Date;
 
   @Column({

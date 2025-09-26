@@ -28,6 +28,8 @@ export class AuthService {
       if (isValid) {
         const { password, ...result } = user;   //apart from password, return everything else in the user.
         const payload = {sub: user.user_id, username: user.name, role: user.role}
+        console.log(payload);
+        
         return {
             access_token: await this.jwtService.signAsync(payload)
         }

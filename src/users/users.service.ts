@@ -91,21 +91,21 @@ async findOne(email: string) {
     };
   }
 
-  async login(email: string, password: string) {
-    const user = await this.usersRepository.findOne({ where: { email } });
+  // async login(email: string, password: string) {
+  //   const user = await this.usersRepository.findOne({ where: { email } });
 
-    if (!user) {
-      throw new NotFoundException("User doesn't exist");
-    } else {
-      const isValid = await bcrypt.compare(password, user.password);
-      if (isValid) {
-        return {
-          message: 'User has logged in successfully',
-          user: user,
-        };
-      } else {
-        throw new UnauthorizedException('Incorrect password');
-      }
-    }
-  }
+  //   if (!user) {
+  //     throw new NotFoundException("User doesn't exist");
+  //   } else {
+  //     const isValid = await bcrypt.compare(password, user.password);
+  //     if (isValid) {
+  //       return {
+  //         message: 'User has logged in successfully',
+  //         user: user,
+  //       };
+  //     } else {
+  //       throw new UnauthorizedException('Incorrect password');
+  //     }
+  //   }
+  // }
 }
