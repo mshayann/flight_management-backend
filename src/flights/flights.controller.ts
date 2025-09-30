@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { FlightsService } from './flights.service';
 import { Roles } from 'roles.decorator';
 import { UserRole } from 'src/users/user.entity';
@@ -29,12 +29,20 @@ export class FlightsController {
     return this.flightsService.addFlight(createFlightDTO);
   }
 
-  @Patch('update/:id')
+  @Patch('updateFlight/:id')
   @UseGuards(AuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   updateFlight(@Param('id') id : number, @Body() updateFlightDTO: UpdateFlightDTO){
     
     return this.flightsService.updateFlight(id, updateFlightDTO);
+  }
+
+
+  @Delete('deleteFlight/:id')
+  @UseGuards(AuthGuard,RolesGuard)
+  @Roles(UserRole.ADMIN)
+  deleteFlight(@Param('id') id : number){
+    return this.flightsService.deleteFlight(id);
   }
 
 }

@@ -54,6 +54,8 @@ export class Flight {
   @JoinColumn({name: 'arrival_airport_id' })
   arrivalAirport : Airport;
 
-  @OneToMany(() => Booking, (booking) => booking.flight)
-  bookings : Booking[];
+  
+// Without cascade: true, TypeORM would throw an error if you try to save a flight with new bookings that aren’t already saved.
+@OneToMany(() => Booking, (booking) => booking.flight, { cascade: true }) // keep cascade for ORM inserts/updates
+bookings: Booking[];
 }

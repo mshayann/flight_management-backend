@@ -24,9 +24,11 @@ export class Payment {
     createdAt : Date;
 
     
-
-    @OneToOne(() => Booking, (booking) => booking.payment)
-    @JoinColumn({name : 'booking_id'})
-    booking : Booking;
+// If the booking goes away, its payment should too.
+@OneToOne(() => Booking, (booking) => booking.payment, {
+  onDelete: "CASCADE",
+})
+@JoinColumn({ name: 'booking_id' })
+booking: Booking;
 
 }
