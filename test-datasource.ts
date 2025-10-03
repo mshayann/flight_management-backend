@@ -1,5 +1,5 @@
 // test-datasource.ts
-import dataSource from './typeorm.config';
+import dataSource from 'typeorm.config';
 
 
 dataSource.initialize()

@@ -2,9 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Flight } from './flight.entity';
 import { Repository } from 'typeorm';
-import { log } from 'console';
-import { Airplane } from 'src/airplanes/airplane.entity';
-import { Airport } from 'src/airports/airport.entity';
+
+import { Airplane } from '../airplanes/airplane.entity';
+import { Airport } from '../airports/airport.entity';
 import { CreateFlightDto } from './DTOs/createFlight.dto';
 import { UpdateFlightDTO } from './DTOs/updateFlightDTO.dto';
 

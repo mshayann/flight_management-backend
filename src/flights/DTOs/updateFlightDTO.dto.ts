@@ -1,4 +1,10 @@
-import { IsInt, IsDateString, IsString, IsEnum, IsOptional } from 'class-validator';
+import {
+  IsInt,
+  IsDateString,
+  IsString,
+  IsEnum,
+  IsOptional,
+} from 'class-validator';
 import { FlightStatus } from '../flight.entity';
 
 // In the entity, airplane is an Airplane object.
@@ -6,20 +12,20 @@ import { FlightStatus } from '../flight.entity';
 // They only know which airplane to use → so they send the ID.
 
 export class UpdateFlightDTO {
-    @IsOptional()
+  @IsOptional()
   @IsInt()
   airplaneId?: number;
 
   @IsOptional()
   @IsInt()
   departureAirportId?: number;
-@IsOptional()
+  @IsOptional()
   @IsInt()
   arrivalAirportId?: number;
 
   @IsOptional()
   @IsDateString()
-  departureTime?: string;  
+  departureTime?: string;
 
   @IsOptional()
   @IsDateString()

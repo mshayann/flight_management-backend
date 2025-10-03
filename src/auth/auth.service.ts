@@ -31,6 +31,7 @@ export class AuthService {
         console.log(payload);
         
         return {
+            user: result,
             access_token: await this.jwtService.signAsync(payload)
         }
       } 

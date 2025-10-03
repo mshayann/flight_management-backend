@@ -6,7 +6,7 @@ import { DataSource } from 'typeorm';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const dataSource = app.get(DataSource);
+  const dataSource = app.get(DataSource); //grabs the TypeORM DataSource instance that Nest is using to talk to your DB.
   await seedAdmin(dataSource);   // 👈 call seed function
 
   // enable global validation

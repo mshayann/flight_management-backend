@@ -10,6 +10,8 @@ import { Payment } from './payments/payment.entity';
 import { Ticket } from './tickets/ticket.entity';
 import { AuthModule } from './auth/auth.module';
 import { FlightsModule } from './flights/flights.module';
+import { AirportsModule } from './airports/airports.module';
+import { AirplanesModule } from './airplanes/airplanes.module';
 
 // Every NestJS app starts from here.
 // It tells NestJS:
@@ -53,6 +55,8 @@ import { FlightsModule } from './flights/flights.module';
     UsersModule,
     AuthModule, //module imported here so NestJS knows about it.
     FlightsModule,
+    AirportsModule,
+    AirplanesModule,
   ],
   controllers: [], // usually empty, unless you want global controllers
   providers: [], // usually empty, unless you want global services
