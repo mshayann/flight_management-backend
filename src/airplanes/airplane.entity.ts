@@ -11,7 +11,7 @@ export class Airplane {
     model: string;
 
     @Column()
-    capacity: string;
+    capacity: number;
 
     @Column()
     manufacturer: string;
@@ -19,5 +19,4 @@ export class Airplane {
     @OneToMany(() => Flight, (flight) => flight.airplane)
     flights: Flight[];
 
-    
 }

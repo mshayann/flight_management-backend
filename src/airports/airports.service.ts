@@ -31,6 +31,11 @@ export class AirportsService {
     return this.airportRepository.find();
   }
 
+  async showSpecificAirport(airportId : number){
+    const airport = this.airportRepository.findOne({where : {airportId}});
+    return airport;
+  }
+
   async updateAirportDetails(airportId: number, updateAirportDTO : UpdateAirportDTO ){
 
 
@@ -58,5 +63,14 @@ export class AirportsService {
         airport: updatedAirport,
         message: 'Airport details updated successfully'
     };
+  }
+
+
+  async deleteAirport(airportId : number){
+
+    await this.airportRepository.delete(airportId);
+    return {
+        message: "Airport deleted successfully"
+    }
   }
 }
